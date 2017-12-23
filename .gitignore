@@ -5,4 +5,4 @@ apache-php/logs/apache2/*
 .idea/*
 db_dump/drupal.sql
 repositories/drupal/
-!repositories/drupal/.htaccess
+!repositories/drupal/.gitkeep
