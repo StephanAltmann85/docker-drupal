@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  apache-php:
+    build: ./apache-php
+    volumes:
+      - ./repositories/drupal:/var/www/drupal
+      - ./apache-php/logs:/var/log/apache-php
+      - ./apache-php/logs/apache2:/var/log/apache2
+    environment:
+      DOMAIN_NAME: "salty.dev"
+      XDEBUG_CONFIG: remote_host=172.12.5.254
+    networks:
+      static-network:
+        ipv4_address: 172.12.1.1
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_USER: dev
+      MYSQL_PASSWORD: 123456
+      MYSQL_DATABASE: drupal
+    volumes:
+      - ./db-dump:/docker-entrypoint-initdb.d
+      - ./scripts:/usr/local/bin/export
+    networks:
+      static-network:
+        ipv4_address: 172.12.1.2
+
+networks:
+  static-network:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 172.12.0.0/16
+         gateway: 172.12.5.254
