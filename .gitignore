@@ -3,6 +3,6 @@ apache-php/logs/error.log
 apache-php/logs/apache2/*
 !apache-php/logs/apache2/.gitkeep
 .idea/*
-db_dump/drupal.sql
-repositories/drupal/
+db-dump/drupal.sql
+repositories/drupal/*
 !repositories/drupal/.gitkeep

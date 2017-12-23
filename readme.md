@@ -3,9 +3,6 @@
 add following to /etc/hosts
     172.12.1.1      salty.dev
     
-### Get IP
-    docker exec -it dockershopware_apache-php_1 ip addr
-
 database-host: db
 
 ## How to start
@@ -18,10 +15,10 @@ database-host: db
 
 
 ## Export database dump
-    docker exec -it dockershopware_db_1 /usr/local/bin/export/dump.sh
+    docker exec -it [name of db-container] /usr/local/bin/export/dump.sh
 
 ## access container's bash
-    docker exec -it dockershopware_db_1 bash
+    docker exec -it [name of container] bash
     
 ## XDebug
 idekey=phpstorm
